@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Movies</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f7f7f7;
+  }
+  h1 {
+    text-align: center;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .movie {
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  .movie:hover {
+    transform: scale(1.05);
+  }
+  .movie img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .movie h3 {
+    margin: 10px;
+    font-size: 1.1rem;
+  }
+</style>
+</head>
+<body>
+<h1>Movie List</h1>
+<div class="grid" id="movieGrid"></div>
+
+<script>
+const movies = [
+  { name: "Avengers", img: "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" },
+  { name: "Batman", img: "https://m.media-amazon.com/images/M/MV5BMmU5NGJlMzAtMGNmOC00YjJjLTgyMzUtNjAyYmE4Njg5YWMyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+  { name: "Spider Man", img: "https://image.api.playstation.com/vulcan/ap/rnd/202009/3021/BtsjAgHT9pqHRXtN9FCk7xc8.png" },
+  { name: "Joker", img: "https://www.tallengestore.com/cdn/shop/products/Joker_-_Put_On_A_Happy_Face_-_Joaquin_Phoenix_-_Fan_Art_Hollywood_English_Movie_Poster_2_758d74d5-b9b0-4db1-a0f0-a47b6bb8136a.jpg?v=1579504892" },
+  { name: "Iron Man", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiQohUgiQqNu59EevP7nTOjfSjaxlaiPR9NQ&s" },
+  { name: "Thor", img: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p9530219_p_v13_aa.jpg" },
+  { name: "Hulk", img: "https://upload.wikimedia.org/wikipedia/en/5/59/Hulk_movie.jpg" },
+  { name: "Captain America", img: "https://m.media-amazon.com/images/M/MV5BNzUyM2YyY2MtNzNlMS00MWU5LTgxNjAtNzZlNmI2NjU2NDZlXkEyXkFqcGc@._V1_.jpg" },
+  { name: "Black Panther", img: "https://m.media-amazon.com/images/I/81X5C1jxEQL._AC_UF1000,1000_QL80_.jpg" },
+  { name: "Doctor Strange", img: "https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_FMjpg_UX1000_.jpg" },
+  { name: "Aquaman", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqkDLgszM3MzAJhzm6n2Dun_sCJPKKTPsj1tdi-I1wdqRHrDnyZHPBzvgduZHDknJBjTaoAA&s=10" },
+  { name: "Flash", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjAsLG1A7bUfPLQl8MnEMuL-3zoqMtk1MK9D28cn9ylLxeIbIbs4RIh930zn_sE27wqJCd&s=10" },
+  { name: "Wonder Woman", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9PHTwyNHxmozojyNDaOkqprpSOYuVu2YysvQqt58atcyUIjK9NEKvMx6TsCCwj1BJt0Hs&s=10" },
+  { name: "Shazam", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO1WKt7L0kUXxeZQjMlR75w8N087ufEJIQCEr9bzFzo6fIcktkSAm3_MhGEu4smVsKU1ZOnO6c4-rnwaUUTBIai5Dy1Sp8lZw3nOZqeng&s=10" },
+  { name: "Superman", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxGnS5AO1k3OpZnSm3tRpSE6QMwI6nD1wZAcbPrTsNa9FZQcBttmU_WNWdTX2IpZu2Dmca9g&s=10" },
+  { name: "Deadpool", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNqjhnkwqWSq5rxn1OuHHJgwUQIk44l4_PiSNmOxNgdlgZul8dDep-NcAuW6gTx7y4HPn4&s=10" }
+];
+
+const container = document.getElementById("movieGrid");
+
+movies.forEach(({name, img}) => {
+  const div = document.createElement("div");
+  div.className = "movie";
+  div.innerHTML = `
+    <img src="${img}" alt="${name}" loading="lazy" />
+    <h3>${name}</h3>
+  `;
+  div.onclick = () => {
+    localStorage.setItem("selectedMovie", name);
+    window.location.href = "details.html";
+  };
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>
