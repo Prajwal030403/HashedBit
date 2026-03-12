@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Assignment Direct Output</title>
+</head>
+<body>
+
+<h2 id="q1"></h2>
+<h2 id="q2"></h2>
+<h2 id="q3"></h2>
+<h2 id="q4"></h2>
+<h2 id="q5"></h2>
+<h2 id="q6"></h2>
+<h2 id="q7"></h2>
+<h2 id="q8"></h2>
+<h2 id="q9"></h2>
+<h2 id="q10"></h2>
+<h2 id="q11"></h2>
+
+<script>
+
+// Q1
+const states=["Andhra Pradesh","Bihar","Odisha","Uttar Pradesh","Maharashtra","Assam","Kerala"];
+let q1=states.filter(s=>!/^[aeiou]/i.test(s));
+document.getElementById("q1").innerText="Q1 Output: "+q1;
+
+
+// Q2
+let str='I love my India';
+let q2=str.split(" ").reverse().join(" ");
+document.getElementById("q2").innerText="Q2 Output: "+q2;
+
+
+// Q3
+let string='INDIA';
+let arr=string.split('');
+arr.splice(3,0,'O','N','E','S');
+document.getElementById("q3").innerText="Q3 Output: "+arr.join('');
+
+
+// Q4
+function countVC(text){
+let v=0,c=0;
+for(let ch of text.toLowerCase()){
+if(/[aeiou]/.test(ch)) v++;
+else if(/[a-z]/.test(ch)) c++;
+}
+return "Vowels="+v+" Consonants="+c;
+}
+document.getElementById("q4").innerText="Q4 Output: "+countVC("This is a simple javascript string");
+
+
+// Q5
+function correctfn(string,wrong,correct){
+return string.replace(wrong,correct);
+}
+document.getElementById("q5").innerText="Q5 Output: "+correctfn("I have a blak pen","blak","black");
+
+
+// Q6
+let inputArr=[1,2,3,9,10,7,5,4,3];
+let q6=inputArr.filter(n=>n>5);
+document.getElementById("q6").innerText="Q6 Output: "+q6;
+
+
+// Q7
+const students=[
+{name:"Ram",scores:[80,70,60]},
+{name:"Mohan",scores:[80,70,90]},
+{name:"Sai",scores:[60,70,80]},
+{name:"Hemang",scores:[90,90,80,80]}
+];
+
+let avg=students.map(s=>{
+let t=s.scores.reduce((a,b)=>a+b,0);
+return s.name+"="+(t/s.scores.length);
+});
+document.getElementById("q7").innerText="Q7 Output: "+avg;
+
+
+// Q8
+function repeatedSum(num){
+while(num>=10){
+num=num.toString().split('').reduce((a,b)=>a+Number(b),0);
+}
+return num;
+}
+document.getElementById("q8").innerText="Q8 Output: "+repeatedSum(456);
+
+
+// Q9
+function countWords(p){
+return p.trim().split(/\s+/).length;
+}
+document.getElementById("q9").innerText="Q9 Output: "+countWords("India is my country and I love it");
+
+
+// Q10
+function reverseString(s){
+return s.split('').reverse().join('');
+}
+document.getElementById("q10").innerText="Q10 Output: "+reverseString("Hello");
+
+
+// Q11
+const marksData={
+student1:{subject1:44,subject2:56,subject3:87,subject4:97,subject5:37},
+student2:{subject1:44,subject2:56,subject3:87,subject4:97,subject5:37},
+student3:{subject1:44,subject2:56,subject3:87,subject4:97,subject5:37}
+};
+
+let result={};
+
+for(let s in marksData){
+let sc=Object.values(marksData[s]);
+let avg=sc.reduce((a,b)=>a+b,0)/sc.length;
+result[s]=avg;
+}
+
+document.getElementById("q11").innerText="Q11 Output: "+JSON.stringify(result);
+
+</script>
+
+</body>
+</html>
